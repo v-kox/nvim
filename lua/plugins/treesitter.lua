@@ -7,7 +7,7 @@ return {
 			-- A list of parser names, or "all"
 			ensure_installed = {
 				"lua", "python", "scala", "bash", "vim", "sql",
-				"json", "luadoc", "markdown", "markdown_inline", 
+				"json", "luadoc", "markdown", "markdown_inline",
 				"jq", "awk", "tmux",
 			},
 

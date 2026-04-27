@@ -2,8 +2,8 @@
 vim.cmd 'colorscheme catppuccin-mocha'
 
 -- Pointing to specific executables for Nodejs and Python3
-vim.g.node_host_prog = '/home/vincent/.local/node-v23.2.0-linux-x64/bin/neovim-node-host'
-vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.node_host_prog = '/home/vincent/.local/bin/neovim-node-host'
+vim.g.python3_host_prog = '/home/vincent/.local/neovim-python3-venv/bin/python3'
 
 -- autoformat text
 vim.g.autoformat = true
@@ -37,3 +37,15 @@ vim.opt.laststatus = 3
 
 vim.wo.number = true -- Show current line number as actual line number
 vim.wo.relativenumber = true -- Show other lines as relative line number
+
+-- enable lsp servers
+vim.lsp.enable({ 
+    "pyright",
+    "jq-lsp",
+    "lua-language-server",
+    "bash-language-server",
+    "json-lsp",
+    "markman",
+    "sqls",
+    "yaml-language-server"
+})

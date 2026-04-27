@@ -9,23 +9,44 @@ return {
     },
     config = function()
         local cmp = require("cmp")
+        local mappings = {
+                ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-CR>'] = cmp.mapping.confirm({ select = true }),
+                ['<C-c>'] = cmp.mapping.abort(),
+                ["<C-Space>"] = cmp.mapping.complete(),
+            }
+
         cmp.setup({
             snippet = {
                 expand = function(args)
                     require('luasnip').lsp_expand(args.body)
                 end,
             },
-            mapping = cmp.mapping.preset.insert({
-                ['<C-j>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-k>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-CR>'] = cmp.mapping.confirm({ select = true }),
-                ["<C-Space>"] = cmp.mapping.complete(),
-            }),
+            mapping = cmp.mapping.preset.insert(mappings),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
-                }, { { name = "buffer"} }
+                { name = "path" },
+            }, { { name = "buffer" } }
             )
+        })
+
+        -- Setup cmp-cmdline for / and ? commands (search)
+        cmp.setup.cmdline({ '/', '?' }, {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'buffer' },
+            }
+        })
+
+        -- Setup for ':' command-line
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'path' },
+                { name = 'cmdline' },
+            }
         })
     end,
 }
