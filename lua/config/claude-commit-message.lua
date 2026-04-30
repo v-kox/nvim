@@ -16,9 +16,12 @@ vim.api.nvim_create_user_command("ClaudeCommitMessage", function()
             For the title line, aim for a length of 50 characters, 
             and do not exceed a length of 72 characters
             In the body of the commit message enforce a line length of 80 characters.
-            With the exception of possible list indicators, do not include Markdown
-            in the message.
-            Output only the message, no preamble.
+
+            Do NOT wrap the output in code fences (```), backticks, or any markdown delimiters.
+            Do NOT prefix with "Commit message:" or similar labels.
+            The first character of your response must be the first character of the commit subject line.
+
+            The body of the commit message can contain list item indicaters (-) but no other markdown.
                 ]] },
       { stdin = diff, text = true },
       vim.schedule_wrap(function(obj)
