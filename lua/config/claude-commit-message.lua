@@ -15,10 +15,13 @@ vim.api.nvim_create_user_command("ClaudeCommitMessage", function()
             Write a git commit message for this diff.
             For the title line, aim for a length of 50 characters, 
             and do not exceed a length of 72 characters
+
             In the body of the commit message enforce a line length of 80 characters.
 
             Do NOT wrap the output in code fences (```), backticks, or any markdown delimiters.
             Do NOT prefix with "Commit message:" or similar labels.
+            Do NOT prefix the title with `feat(...)`, `bug(...)`, `hotfix(...)` or similar.
+
             The first character of your response must be the first character of the commit subject line.
 
             The body of the commit message can contain list item indicaters (-) but no other markdown.
