@@ -37,8 +37,10 @@ vim.api.nvim_create_user_command("ClaudeCommitMessage", function()
         local lines = vim.split(msg, "\n", { plain = true })
 
         vim.api.nvim_buf_set_text(bufnr, 0, 0, 0, 0, lines)
-
         vim.api.nvim_win_set_cursor(win, { 1, 0 })
+
+        -- Clear notification
+        vim.notify("")
       end)
     )
   end, { desc = "Insert a Claude-generated commit message at the top of the buffer" })
