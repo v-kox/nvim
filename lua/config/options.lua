@@ -39,13 +39,13 @@ vim.wo.number = true -- Show current line number as actual line number
 vim.wo.relativenumber = true -- Show other lines as relative line number
 
 -- enable lsp servers
-vim.lsp.enable({ 
+vim.lsp.enable({
     "pyright",
-    "jq-lsp",
-    "lua-language-server",
-    "bash-language-server",
-    "json-lsp",
-    "markman",
+    "jqls",
+    "lua_ls",
+    "bashls",
+    "jsonls",
+    "marksman",
     "sqls",
-    "yaml-language-server"
+    "yamlls"
 })
